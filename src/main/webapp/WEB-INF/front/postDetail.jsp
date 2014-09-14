@@ -25,7 +25,6 @@
 					<h2>
 						<a href="${ctx}/post/${post.url}" title="photography">${post.postTitle}</a>
 					</h2>
-					${post.postTitle}
 				</section>
 				<section class="meta">
 					<span class="time"> <time
