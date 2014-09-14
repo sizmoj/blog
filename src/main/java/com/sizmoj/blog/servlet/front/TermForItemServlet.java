@@ -1,6 +1,7 @@
 package com.sizmoj.blog.servlet.front;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +31,7 @@ public class TermForItemServlet extends HttpServlet {
 
 		TermService ts = new TermService();
 		PostService ps = new PostService();
-		String termName = get(request.getRequestURL().toString());
+		String termName = URLDecoder.decode(get(request.getRequestURL().toString()), "UTF-8");
 		Term term = ts.getTerm(termName);
 		if(term == null) {
 			request.getRequestDispatcher("/WEB-INF/front/404.jsp").forward(request, response);

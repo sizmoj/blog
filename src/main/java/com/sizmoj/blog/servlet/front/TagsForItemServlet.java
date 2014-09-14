@@ -1,6 +1,7 @@
 package com.sizmoj.blog.servlet.front;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +31,7 @@ public class TagsForItemServlet extends HttpServlet {
 		
 		TagService ts = new TagService();
 		PostService ps = new PostService();
-		String tagName = get(request.getRequestURL().toString());
+		String tagName = URLDecoder.decode(get(request.getRequestURL().toString()), "UTF-8");
 		Tag tag = ts.getTagByName(tagName);
 		if(tag == null) {
 			request.getRequestDispatcher("/WEB-INF/front/404.jsp").forward(request, response);

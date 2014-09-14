@@ -16,7 +16,7 @@ import com.sizmoj.common.persistence.DBUtilsHelper;
 
 public class TagService {
 	public static final String GET_ALL_TAG_SQL = 
-			"SELECT ID AS id, NAME AS name FROM BLOG_TAG";
+			"SELECT ID AS id, NAME AS name FROM BLOG_TAG T WHERE T.ID IN (SELECT L.TAG_ID FROM BLOG_TAG_POST L)";
 	public static final String GET_TAG_BY_POST_ID_SQL = 
 			"SELECT T.ID AS id, T.NAME AS name FROM BLOG_TAG T LEFT JOIN BLOG_TAG_POST P ON "
 			+ "T.ID = P.TAG_ID WHERE P.POST_ID = ?";
