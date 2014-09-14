@@ -25,11 +25,7 @@
 					<h2>about</h2>
 				</section>
 				<section class="post">${about.content }</section>
-			</article>
-		</div>
-		<%@ include file="../front/layout/footer.jsp"%>
-	</div>
-	<!-- 多说评论框 start -->
+				<!-- 多说评论框 start -->
 		<div class="ds-thread" data-thread-key="${post.url}"
 			data-title="${post.postTitle}" data-url="${ctx}/post/${post.url}"></div>
 		<!-- 多说评论框 end -->
@@ -51,6 +47,10 @@
 			})();
 		</script>
 		<!-- 多说公共JS代码 end -->
+			</article>
+		</div>
+		<%@ include file="../front/layout/footer.jsp"%>
+	</div>
 	<!-- main -->
 </body>
 
