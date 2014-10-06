@@ -87,7 +87,7 @@ public class PostService {
 			+ "p.PUBLIC_DATE AS publicDate,"
 			+ "p.POST_TITLE AS postTitle,"
 			+ "p.TERM_ID AS termId FROM BLOG_POST p LEFT JOIN BLOG_TAG_POST t ON p.ID = t.POST_ID "
-			+ "WHERE p.STATUS ='1' AND p.PUBLIC_DATE IS NOT NULL GROUP BY p.ID ORDER BY p.PUBLIC_DATE DESC LIMIT 2,10";
+			+ "WHERE p.STATUS ='1' AND p.PUBLIC_DATE IS NOT NULL GROUP BY p.ID ORDER BY p.PUBLIC_DATE DESC LIMIT 1,10";
 	
 	private static final String SQL_GET_POST_BY_YEAR = "SELECT p.ID AS id, p.URL AS url, p.LIKING"
 			+ " AS liking, "
