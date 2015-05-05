@@ -41,8 +41,16 @@
                         <li>
                             <a href="${pageContext.request.contextPath}/back/linkList"><i class="fa fa-tasks fa-fw"></i>友情连接</a>
                         </li>
+                        
                         <li>
-                            <a href="${pageContext.request.contextPath}/back/updateAbout"><i class="fa fa-files-o fa-fw"></i>关于</a>
+                            <a href="${pageContext.request.contextPath}/back/updateProjects"><i class="fa fa-files-o fa-fw"></i>项目</a>
+                        </li>
+                        
+                        <li>
+                            <a href="${pageContext.request.contextPath}/back/updateAbout"><i class="fa fa-wrench fa-fw"></i>关于</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/back/mdpassword"><i class="fa fa-bar-chart-o fa-fw"></i>密码修改</a>
                         </li>
                     </ul>
                 </div>

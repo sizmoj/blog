@@ -1,5 +1,5 @@
 <%@tag pageEncoding="UTF-8"%>
-<%@ attribute name="page" type="com.sizmoj.common.web.Page" required="true"%>
+<%@ attribute name="page" type="com.xizhimojie.common.web.Page" required="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
