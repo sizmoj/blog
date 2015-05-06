@@ -3,6 +3,7 @@ package com.xizhimojie.blog.domain;
 public class About {
 	private Integer id;
 	private String content;
+	
 	public Integer getId() {
 		return id;
 	}
