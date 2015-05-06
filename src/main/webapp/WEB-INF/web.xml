@@ -10,7 +10,7 @@
 	</welcome-file-list>
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
-		<filter-class>com.sizmoj.blog.servlet.filter.CharacterEncodingFilter</filter-class>
+		<filter-class>com.xizhimojie.blog.servlet.filter.CharacterEncodingFilter</filter-class>
 		<!-- 配置初始化参数 -->
 		<init-param>
 			<param-name>encoding</param-name>

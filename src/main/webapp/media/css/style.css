@@ -1,14 +1,4 @@
 @charset "UTF-8";
-/*------------------------------------
- * sext-vi
- *
- * @author linghua.zhang@me.com
- * @link http://lhzhang.com/
- * @update 2014-03-17
- *
- * |/ | (~ (~
- * |\.|._)._)
- * --------------------------------- */
 * {
   margin: 0;
   padding: 0; }
@@ -33,6 +23,36 @@ hr {
 
 .center {
   text-align: center; }
+/***。。。。***/
+.site-header
+{	
+    margin-bottom: 1.5rem;
+}
+.site-header .name {
+    display: block;
+    font-weight: 200;
+    font-size: 1.5em;
+    text-decoration: none;
+    color:black
+}
+.site-header .site-nav a {
+    text-decoration: none;
+    font-variant: small-caps;
+    font-size: 1.3rem;
+    text-transform: lowercase;
+    color:black;
+}
+
+.site-header .site-nav a + a {
+    margin-left: 1rem;
+}
+.site-header .name:hover {
+    color: red;
+}
+.site-header .site-nav a:hover {
+    color:red;
+}
+/***..............**/
 
 ::selection {
   color: #fff;

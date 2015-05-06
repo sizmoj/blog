@@ -27,12 +27,12 @@
 				<section class="post">${about.content }</section>
 				<!-- 多说评论框 start -->
 		<div class="ds-thread" data-thread-key="${post.url}"
-			data-title="${post.postTitle}" data-url="${ctx}/post/${post.url}"></div>
+			data-title="${post.postTitle}" data-url="www.xizhimojie.com/post/${post.url}"></div>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">
 			var duoshuoQuery = {
-				short_name : "xizhimojie"
+				short_name : "<%=Constants.duoshuo %>"
 			};
 			(function() {
 				var ds = document.createElement('script');
