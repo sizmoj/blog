@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +34,7 @@
 <link
 	href="${pageContext.request.contextPath}/font-awesome-4.1.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
-	<script src="${pageContext.request.contextPath}/js/jquery-1.11.0.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-1.11.0.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -42,72 +42,96 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#add").click(function(){
+	$(document).ready(function() {
+		$("#add").click(function() {
 			window.location = "${ctx}/back/addPost";
 		});
 	});
+	
+ 	function ajaxFileUpload() {
+		$.ajaxFileUpload({
+			url : '${ctx}/back/AddPostPhotoServlet',// servlet请求路径
+			secureuri : false,
+			fileElementId : 'fileToUpload',// 上传控件的id
+			dataType : 'json',
+			data : {}, // 其它请求参数
+			success : function(data, status) {
+				$("#adress").append("<div class=\"alert alert-info\"><a href=\"http://" + data.msg + "\" class=\"alert-link\"  target=\"_blank\">" + data.msg + "</a></div>")
+			},
+			error : function(data, status, e) {
+				$("#adress").append("<p>"+ 上传文件不能为空 +"</p>")
+			}
+		})
+		return false;
+
+	} 
+	
 </script>
 </head>
-
 <body>
 	<div id="wrapper">
 		<%@ include file="../back/layout/head.jsp"%>
-		<div id="page-wrapper">	
+		<div id="page-wrapper">
 			<div class="row">
-	            <div class="col-lg-12">
-	                <h1 class="page-header">文章添加</h1>
-	            </div>
-	            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-9">
-                                    <form role="form" action="${ctx}/back/addPost" method="post" >
-                                        <div class="form-group">
-                                            <label>文章标题</label>
-                                            <input name="postTitle" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>文章URL</label>
-                                            <input name="url" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>标签, 多个请以分号相隔</label>
-                                            <input name="tags" class="form-control"/>
-                                        </div>                                        
-                                         <div class="form-group">
-                                            <label>文章分类</label>
-                                            <select name="termId" class="form-control">
-                                         	<c:forEach items="${terms}" var="term">
-                                                <option value="${term.id}">${term.name}</option>
-                                            </c:forEach>    
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>文章内容</label>
-                                            <textarea name="content" class="form-control" rows="15"></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-default">提交</button>
-                                    </form>
-                            </div>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>    
-	        </div>
+				<div class="col-lg-12">
+					<h1 class="page-header">文章添加</h1>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading"></div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-lg-9">
+										<form role="form" action="${ctx}/back/addPost" method="post">
+											<div class="form-group">
+												<label>文章标题</label> <input name="postTitle"
+													class="form-control" />
+											</div>
+											<div class="form-group">
+												<label>文章URL</label> <input name="url" class="form-control" />
+											</div>
+											<div class="form-group">
+												<label>标签, 多个请以分号相隔</label> <input name="tags"
+													class="form-control" />
+											</div>
+											<div class="form-group">
+												<label>文章分类</label> <select name="termId"
+													class="form-control">
+													<c:forEach items="${terms}" var="term">
+														<option value="${term.id}">${term.name}</option>
+													</c:forEach>
+												</select>
+											</div>
+											<div class="form-group">
+												<label>文章内容</label>
+												<textarea name="content" class="form-control" rows="15"></textarea>
+											</div>
+											<button type="submit" class="btn btn-default">提交</button>
+										</form>
+										<div class="form-group">
+											<label>图片上传（目前只支持七牛云存储）</label>
+											<form name="fileform" action="${ctx}/back/AddPostPhotoServlet" method="POST" enctype="multipart/form-data">
+											<input id="fileToUpload" type="file" size="45" name="fileToUpload">
+											<button class="btn btn-default" onclick="return ajaxFileUpload();">上传</button>
+											</form>
+									    </div>
+										<div id ="adress" class="col-lg-9">
+										</div>
+									<!-- /.row (nested) -->
+								</div>
+								<!-- /.panel-body -->
+							</div>
+							<!-- /.panel -->
+						</div>
+						<!-- /.col-lg-12 -->
+					</div>
+				</div>
+			</div>
+			<!-- /.panel-body -->
 		</div>
-		<!-- /.panel-body -->
+		<!-- /.panel -->
 	</div>
-	<!-- /.panel -->
-</div>
 
 
 	<!-- /#wrapper -->
@@ -138,7 +162,7 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="${pageContext.request.contextPath}/js/sb-admin-2.js"></script>
-
+<script src="${pageContext.request.contextPath}/js/ajaxfileupload.js"></script>
 </body>
 
 </html>

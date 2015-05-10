@@ -54,11 +54,6 @@ CREATE TABLE BLOG_TERM(
 	PRIMARY KEY (ID)
 ) COMMENT = '分类表';
 
-CREATE TABLE BLOG_POST_TERM(
-	POST_ID BIGINT NOT NULL COMMENT '文章编号',
-	TERM_ID BIGINT NOT NULL COMMENT '分类编号',
-	PRIMARY KEY (POST_ID, TERM_ID)
-) COMMENT = '文章分类表';
 
 CREATE TABLE BLOG_PROJECTS
 (
@@ -74,8 +69,42 @@ CREATE TABLE BLOG_ABOUT
 	PRIMARY KEY (ID)
 ) COMMENT = '关于表';
 
+-- ----------------------------
+-- Table structure for `blog_link`
+-- ----------------------------
+DROP TABLE IF EXISTS `blog_link`;
+CREATE TABLE `blog_link` (
+`ID`  bigint(20) NOT NULL AUTO_INCREMENT ,
+`NAME`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+`URL`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+PRIMARY KEY (`ID`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
+AUTO_INCREMENT=2
+;
+
+-- ----------------------------
+-- Table structure for `blog_term`
+-- ----------------------------
+DROP TABLE IF EXISTS `blog_term`;
+CREATE TABLE `blog_term` (
+`ID`  bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键' ,
+`NAME`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '名字' ,
+`IS_SHOW`  char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '是否在导航栏中显示（0：正常；1：不显示）' ,
+`STATUS`  char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' ,
+`IS_PAGE`  char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '是否是一个页面（0：是；1：不是）' ,
+PRIMARY KEY (`ID`))
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
+COMMENT='分类表'
+AUTO_INCREMENT=14
+;
+
+
+
 INSERT INTO `BLOG_PROJECTS` VALUES (1, 'hello world');
 INSERT INTO `BLOG_ABOUT` VALUES (1, 'hello world');
 INSERT INTO `sys_user` VALUES (1, 'admin', 'admin', 'admin', NULL, NULL, NULL, NULL);
 INSERT INTO `blog_post` VALUES (1, 1, '2015-5-6 01:24:17', 'hello world~ have fun~', 'hello world', '1', '2015-5-6 01:24:40', NULL, 1, 'helloworld', 1, 1, 1);
-INSERT INTO `blog_term` VALUES (1, '文章', '0', '0');
+INSERT INTO `blog_term` VALUES (1, '文章', '0','1', '0');
