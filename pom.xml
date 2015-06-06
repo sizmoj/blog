@@ -60,6 +60,11 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+		    <groupId>com.qiniu</groupId>
+		    <artifactId>qiniu-java-sdk</artifactId>
+		    <version>[7.0.0, 7.0.99]</version>
+		</dependency>
 	</dependencies>
 
 
